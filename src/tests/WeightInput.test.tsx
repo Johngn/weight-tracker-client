@@ -1,26 +1,26 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import Input from './Input';
+import WeightInput from '../components/WeightInput';
 import userEvent from '@testing-library/user-event';
 
 afterEach(cleanup);
 
-describe('Input component', () => {
+describe('WeightInput component', () => {
   test('renders learn react link', () => {
-    render(<Input />);
+    render(<WeightInput onSubmitWeight={submitWeightHandler}/>);
 
     const textElement = screen.getByText('Hello');
     expect(textElement).toBeInTheDocument();
   });
 
   test('renders false if button NOT clicked', () => {
-    render(<Input />);
+    render(<WeightInput  onSubmitWeight={enteredText => void}/>);
 
     const textElement = screen.getByText('false', { exact: false });
     expect(textElement).toBeInTheDocument();
   });
 
   test('renders true if button IS clicked', () => {
-    render(<Input />);
+    render(<WeightInput onSubmitWeight={enteredText => void} />);
 
     const buttonElement = screen.getByRole('button');
     userEvent.click(buttonElement);
@@ -30,7 +30,7 @@ describe('Input component', () => {
   });
 
   test('does not render false if button IS clicked', () => {
-    render(<Input />);
+    render(<WeightInput onSubmitWeight={enteredText => void} />);
 
     const buttonElement = screen.getByRole('button');
     userEvent.click(buttonElement);
@@ -39,3 +39,12 @@ describe('Input component', () => {
     expect(textElement).toBeNull();
   });
 });
+
+// describe('Async component', () => {
+//   test('renders posts if request succeeds', async () => {
+//     render(<Async />);
+
+//     const listItemElements = await screen.findAllByRole('listitem');
+//     expect(listItemElements).not.toHaveLength(0);
+//   });
+// });

@@ -1,10 +1,12 @@
 class Weight {
-  id: string;
   text: string;
+  date: Date;
+  _id?: string;
 
   constructor(weightText: string) {
     this.text = weightText;
-    this.id = new Date().toISOString();
+    this.date = new Date();
+    this._id = undefined;
   }
 }
 
