@@ -3,14 +3,12 @@ import store from './state/store';
 
 import WeightContainer from './components/WeightContainer';
 
-import './App.css';
+import './index.css';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="App">
-        <WeightContainer />
-      </div>
+      <WeightContainer />
     </Provider>
   );
 };

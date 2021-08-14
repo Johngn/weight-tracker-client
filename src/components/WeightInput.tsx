@@ -1,28 +1,32 @@
 import { useRef } from 'react';
 
-const Input: React.FC<{ onSubmitWeight: (enteredText: string) => void }> = ({
-  onSubmitWeight,
-}) => {
-  const weightTextInputRef = useRef<HTMLInputElement>(null);
+const Input: React.FC<{ onSubmitWeight: (enteredText: string) => void }> =
+  props => {
+    const weightTextInputRef = useRef<HTMLInputElement>(null);
 
-  const submitHandler = (event: React.FormEvent) => {
-    event.preventDefault();
+    const submitHandler = (event: React.FormEvent) => {
+      event.preventDefault();
 
-    const enteredText = weightTextInputRef.current!.value;
+      const enteredText = weightTextInputRef.current!.value;
 
-    if (enteredText?.trim().length === 0) {
-      return;
-    }
+      if (enteredText?.trim().length === 0) {
+        return;
+      }
 
-    onSubmitWeight(enteredText);
+      props.onSubmitWeight(enteredText);
+    };
+
+    return (
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          id="text"
+          data-testid="input-1"
+          ref={weightTextInputRef}
+        />
+        <button>Submit</button>
+      </form>
+    );
   };
-
-  return (
-    <form onSubmit={submitHandler}>
-      <input type="text" id="text" ref={weightTextInputRef} />
-      <button>Submit</button>
-    </form>
-  );
-};
 
 export default Input;

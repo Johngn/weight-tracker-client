@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getWeights } from '../state/action-creators';
 
-const DailyWeights: React.FC = () => {
+const DailyWeights = () => {
   const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
   const getDailyWeights = bindActionCreators(getWeights, useDispatch());
   const dailyWeightValues = useTypedSelector(
@@ -23,11 +23,14 @@ const DailyWeights: React.FC = () => {
   }, [dailyWeightValues]);
 
   return (
-    <ul>
-      {dailyWeightValues.map(weight => (
-        <DailyWeight key={weight._id} text={weight.text} />
-      ))}
-    </ul>
+    <>
+      <h2>Daily Weights:</h2>
+      <ul>
+        {dailyWeightValues.map(weight => (
+          <DailyWeight key={weight._id} text={weight.text} />
+        ))}
+      </ul>
+    </>
   );
 };
 

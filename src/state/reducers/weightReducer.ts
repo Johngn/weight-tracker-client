@@ -1,5 +1,4 @@
-import { ActionType } from '../action-types';
-import { WeightActions } from '../actions';
+import { ActionType, WeightActions } from '../action-types';
 import Weight from '../../models/weight';
 
 interface WeightState {

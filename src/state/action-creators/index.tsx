@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { WeightActions, ErrorAction } from '../actions';
-import { ActionType } from '../action-types';
+import { ActionType, WeightActions, ErrorAction } from '../action-types';
 import Weight from '../../models/weight';
 
 export const submitWeight = (weight: Weight) => {
@@ -16,10 +15,10 @@ export const submitWeight = (weight: Weight) => {
       dispatch({
         type: ActionType.SUBMIT_WEIGHT,
       });
-    } catch (error: any) {
+    } catch (err: any) {
       dispatch({
         type: ActionType.ERROR,
-        payload: error.message,
+        payload: err.message,
       });
     }
   };
@@ -40,10 +39,10 @@ export const getWeights = () => {
         type: ActionType.GET_WEIGHTS,
         payload: dailyWeightValues,
       });
-    } catch (error: any) {
+    } catch (err: any) {
       dispatch({
         type: ActionType.ERROR,
-        payload: error.message,
+        payload: err.message,
       });
     }
   };
